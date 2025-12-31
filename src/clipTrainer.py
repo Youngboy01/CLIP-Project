@@ -5,7 +5,6 @@ import wandb
 from tqdm.auto import tqdm
 import warnings
 from config import Config
-from DataLoad import ROCODataset
 
 config = Config()
 warnings.filterwarnings("ignore", category=FutureWarning)
@@ -36,9 +35,7 @@ class CLIPFineTuner:
         return vision_layers, text_layers
 
     def apply_strategy(self):
-        print(f"\n{'=' * 60}")
         print(f"Applying Fine-tuning Strategy: {self.strategy.upper()}")
-        print(f"{'=' * 60}\n")
 
         self.freeze_all()
 
@@ -117,10 +114,7 @@ class CLIPFineTuner:
         trainable = sum(p.numel() for p in self.model.parameters() if p.requires_grad)
         total = sum(p.numel() for p in self.model.parameters())
         percentage = 100 * trainable / total
-
-        print(f"\n{'=' * 60}")
         print(f"Trainable Parameters: {trainable:,} / {total:,} ({percentage:.2f}%)")
-        print(f"{'=' * 60}\n")
 
 
 class CLIPTrainer:
@@ -155,7 +149,6 @@ class CLIPTrainer:
     def train_epoch(self, epoch):
         self.model.train()
         total_loss = 0
-        total_grad_norm = 0
 
         pbar = tqdm(
             self.train_loader, desc=f"Epoch {epoch + 1}/{self.config.num_epochs}"
@@ -307,9 +300,7 @@ class CLIPTrainer:
 
     def train(self):
         """Main training loop"""
-        print("\n" + "=" * 60)
         print("Starting Training")
-        print("=" * 60 + "\n")
 
         for epoch in range(self.config.num_epochs):
             train_loss = self.train_epoch(epoch)

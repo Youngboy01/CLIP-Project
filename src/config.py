@@ -27,6 +27,3 @@ class Config:
     log_every_n_steps = 50
 
     eval_every_n_epochs = 1
-
-
-config = Config()

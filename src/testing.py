@@ -8,7 +8,6 @@ import json
 from datetime import datetime
 import os
 
-
 @torch.no_grad()
 def evaluate_model():
     print("-" * 50)
