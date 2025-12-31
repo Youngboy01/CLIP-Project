@@ -4,7 +4,6 @@ from transformers import CLIPProcessor, CLIPModel
 
 MODEL_ID = "spicy03/CLIP-ROCO-v1"
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-
 print(f" Loading Model: {MODEL_ID}...")
 try:
     model = CLIPModel.from_pretrained(MODEL_ID).to(DEVICE)

@@ -119,6 +119,5 @@ def main():
         if config.use_wandb:
             wandb.finish()
 
-
 if __name__ == "__main__":
     main()

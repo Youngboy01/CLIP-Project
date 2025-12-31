@@ -4,7 +4,6 @@ from config import Config
 
 config = Config()
 
-
 class ROCODataset(Dataset):
     """ROCO Radiology Dataset with CLIP preprocessing"""
 

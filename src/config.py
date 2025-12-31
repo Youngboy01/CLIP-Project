@@ -1,6 +1,5 @@
 import torch
 
-
 class Config:
     model_name = "openai/clip-vit-base-patch32"
     dataset_name = "eltorio/ROCO-radiology"

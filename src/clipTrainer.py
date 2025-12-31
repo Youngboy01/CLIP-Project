@@ -359,3 +359,4 @@ class CLIPTrainer:
 
         print(f"Resuming from Epoch {start_epoch}")
         return start_epoch
+
