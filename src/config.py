@@ -2,7 +2,7 @@ import torch
 
 
 class Config:
-    model_name = "openai/clip-vit-base-patch32"
+    model_name = "openai/clip-vit-base-patch16"
     dataset_name = "eltorio/ROCO-radiology"
     max_length = 77
     image_size = 224
