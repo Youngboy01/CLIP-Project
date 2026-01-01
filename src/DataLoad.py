@@ -4,11 +4,13 @@ from config import Config
 
 config = Config()
 
+
 class ROCODataset(Dataset):
     """ROCO Radiology Dataset with CLIP preprocessing"""
 
     def __init__(self, split="train", processor=None, max_samples=None):
         self.processor = processor
+        self.split = split  # Added this line
 
         print(f"Loading ROCO dataset ({split} split)...")
         dataset = load_dataset(config.dataset_name, split=split)
@@ -30,6 +32,14 @@ class ROCODataset(Dataset):
 
         self.data = dataset
         print(f"Final dataset size: {len(self.data)} samples")
+        self.augment = transforms.Compose(
+            [
+                transforms.RandomAffine(
+                    degrees=10, translate=(0.05, 0.05), scale=(0.95, 1.05)
+                ),
+                transforms.ColorJitter(brightness=0.2, contrast=0.2),
+            ]
+        )
 
     def __len__(self):
         return len(self.data)
@@ -40,6 +50,8 @@ class ROCODataset(Dataset):
         image = item["image"]
         if image.mode != "RGB":
             image = image.convert("RGB")
+        if self.split == "train":
+            image = self.augment(image)
 
         caption = item["caption"]
 

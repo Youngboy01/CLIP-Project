@@ -11,9 +11,7 @@ import os
 
 @torch.no_grad()
 def evaluate_model():
-    print("-" * 50)
     print("testing on the test dataset")
-    print("-" * 50)
     MODEL_PATH = "/content/drive/MyDrive/best_model_hf"
     print(f"loading model from path : {MODEL_PATH}")
     device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -94,9 +92,7 @@ def evaluate_model():
         + metrics["text_to_image"]["recall_at_5"]
     ) / 2
 
-    print("\n" + "=" * 70)
     print(" FINAL TEST SET RESULTS")
-    print("=" * 70)
 
     print("\nImage → Text Retrieval:")
     print(f"  R@1:  {metrics['image_to_text']['recall_at_1']:.2f}%")

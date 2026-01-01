@@ -4,7 +4,8 @@ from transformers import CLIPProcessor, CLIPModel
 from datetime import datetime
 from config import Config
 from DataLoad import ROCODataset
-from clipTrainer import CLIPFineTuner,CLIPTrainer
+from clipTrainer import CLIPFineTuner, CLIPTrainer
+
 config = Config()
 
 
@@ -12,7 +13,7 @@ def main():
     DEBUG = False
     RESUME_FROM = None
 
-    drive_checkpoint_dir = "/content/drive/MyDrive/clip_roco_finetuning"
+    drive_checkpoint_dir = "/content/drive/MyDrive/ROCO_FINETUNING"
     config.checkpoint_dir = drive_checkpoint_dir
     os.makedirs(config.checkpoint_dir, exist_ok=True)
 
@@ -27,7 +28,7 @@ def main():
             run_name += "_DEBUG"
 
         wandb.init(
-            project="clip-roco-finetuning",
+            project="ROCOCLIP",
             config=vars(config),
             name=run_name,
             resume="allow",
@@ -118,6 +119,7 @@ def main():
     finally:
         if config.use_wandb:
             wandb.finish()
+
 
 if __name__ == "__main__":
     main()

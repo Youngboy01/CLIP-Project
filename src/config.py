@@ -1,5 +1,6 @@
 import torch
 
+
 class Config:
     model_name = "openai/clip-vit-base-patch32"
     dataset_name = "eltorio/ROCO-radiology"
@@ -8,9 +9,9 @@ class Config:
 
     strategy: Literal["vision_only", "text_only", "last_30"] = "last_30"
     num_epochs = 5
-    batch_size = 128
+    batch_size = 256
     actual_batch_size = 32
-    gradient_accumulation_steps = 4
+    gradient_accumulation_steps = 8
     learning_rate = 1e-5
     warmup_steps = 500
     weight_decay = 0.01
