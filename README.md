@@ -70,7 +70,6 @@ Batch-wise recall acts as a **classification proxy** and reflects how well the m
 | Metric | Score | Description |
 |------|------|-------------|
 | **Global Recall@1** | **~6.02%** | Correct image–text pair ranked first among all 8,176 candidates |
-
 ---
 
 ##  What Do These Metrics Mean?
@@ -162,7 +161,7 @@ The model was evaluated on the **ROCO test set (8,176 image–caption pairs)** u
 - Improved **batch-wise Recall@1** (70.83% → 72.59%)
 - Noticeable gains in **global retrieval**:
   - Recall@1: ~6.02% → ~8.41%
-  - Recall@5: introduced and reached ~19.39%
+  - Recall@5: ~16% → ~19.39%
 - Better training stability and later optimal convergence
 
 These results indicate that **higher visual resolution, larger effective batch size, and data augmentation** collectively contributed to stronger global retrieval performance.
